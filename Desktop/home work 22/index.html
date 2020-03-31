@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        const films = [
+            {   
+                title :' Спеши любить',
+                genre : 'драма',
+                year :'1990',
+            },
+            {   
+                title :'Как я встретил вашу маму',
+                genre : 'комедия',
+                year :'2003',
+            },
+            {   
+                title :'Славные парни',
+                genre : 'криминал',
+                year :'1980',
+            }
+        ]
+        console.log(films);
+
+       
+        
+        let objFilms = {};
+
+        const foo = function (arg){
+             
+         for(let i = 0; i < arg.length; i++){
+                let{title,...rest} = arg[i];
+                Object.defineProperty(objFilms,title,{value:[rest]});
+                
+         }
+         return objFilms;
+         
+        }
+        foo(films);
+        
+        //возвращает пустой массив 
+        console.log(Object.keys(objFilms));//не работает потому что не итерируемый?
+        console.log(Object.values(objFilms));//не работает потому что не итерируемый?
+        
+        
+       
+        
+        
+        objFilms[Symbol.iterator] = function(){
+                
+                // как мне тут присвоить значение ? 
+            
+                const items = Object.values(objFilms);
+                
+                
+                
+        }
+
+        for(key of title){
+            console.log(key);
+        }
+
+        
+    </script>
+</body>
+</html>
